@@ -67,6 +67,7 @@ app.post('/api/chat', async (req, res) => {
       return res.status(502).json({ error: 'Dịch vụ AI tạm thời gặp lỗi. Vui lòng thử lại sau.' });
     }
     const reply = (data.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
+    console.log('Gemini finishReason:', data.candidates?.[0]?.finishReason);
     if (!reply) return res.status(502).json({ error: 'Gemini không trả về câu trả lời. Vui lòng thử lại.' });
     return res.json({ reply });
   } catch (error) {
