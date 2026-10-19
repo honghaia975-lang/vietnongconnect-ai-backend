@@ -55,7 +55,7 @@ app.post('/api/chat', async (req, res) => {
       body: JSON.stringify({
         systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
         contents,
-        generationConfig: { temperature: 0.6, maxOutputTokens: 900 }
+        generationConfig: { temperature: 0.6, maxOutputTokens: 2048 }
       }),
       signal: AbortSignal.timeout(30000)
     });
